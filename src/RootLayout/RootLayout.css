@@ -6,6 +6,12 @@
   justify-content: center;
 }
 
+
+.page-content {
+  padding-top: 80px; /* Adjust as per your NavigationBar height */
+  min-height: 90vh;
+}
+
 .sidebar {
   position: inline;
 }
@@ -52,6 +58,10 @@
   animation-delay: 0.6s;
 }
 
+
+.Back{
+  background: linear-gradient(to right, #085078, #85D8CE);
+}
 @keyframes pulse {
   to {
     opacity: 1;

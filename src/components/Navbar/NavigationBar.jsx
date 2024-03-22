@@ -10,7 +10,7 @@ function TalentSpaceNavbar() {
   };
 
   return (
-    <Navbar expand="lg" bg="light" variant="light" className="shadow-sm">
+    <Navbar expand="lg" variant="light" className="shadow-sm fixed-top" style={{ backgroundColor: 'transparent', borderBottom: 'none' }}>
       <Container>
         <Navbar.Brand href="/" className="fw-bold">Talent Space</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

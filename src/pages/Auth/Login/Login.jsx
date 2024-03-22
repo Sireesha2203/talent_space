@@ -1,23 +1,25 @@
-import React, { useContext , useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { loginContext } from '../../../contexts/loginContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { loginContext } from '../../../contexts/loginContext';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import './Login.css'
+import './Login.css';
 import { Button } from 'react-bootstrap';
-import { useSpring,animated } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { webContext } from '../../../contexts/webContext';
+
 function Login() {
-    let [
-    sideBarStatus,
-    changeSideBarStatus
-    ] = useContext(webContext);
-  changeSideBarStatus(false)
-  let [, loginUser, userLoginStatus, loginErr,] = useContext(loginContext)
-  const navigate = useNavigate()
+  let [
+  sideBarStatus,
+  changeSideBarStatus
+  ] = useContext(webContext);
+changeSideBarStatus(false)
+  let [, loginUser, userLoginStatus, loginErr,] = useContext(loginContext);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+
   const submitForm = async (userCredObj) => {
     try {
       setLoading(true);
@@ -25,18 +27,20 @@ function Login() {
     } finally {
       setLoading(false);
     }
-  }
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     if (userLoginStatus) {
       navigate('/dashboard');
     }
-  },[loading,userLoginStatus])
+  }, [loading, userLoginStatus]);
+
   const fadeInFromLeftAnimation = useSpring({
     to: { opacity: 1, transform: "translateX(0px)" },
     from: { opacity: 0, transform: "translateX(-20px)" },
     config: { duration: 500 },
   });
-  
+
   return (
     <animated.div style={fadeInFromLeftAnimation} className="container p-4">
       <div className="row">
@@ -49,17 +53,16 @@ function Login() {
             height="100%"
           />
         </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 p-4 border  border-2 bg bg-success bg-opacity-10 image1">
+        <div className="col-lg-6 col-md-6 col-sm-12 p-4 border bg-white bg-opacity-10 image1">
           <div className="card-body" width="100%" height="100%">
-            <div className="text-center">
-              <h2 className="text-center text-white fs-1">Administrator</h2>
+            <div className="text-center mb-4">
+              {/* <h2 className="text-center text-white fs-1">Administrator</h2> */}
               <h1 className="text-white ">Sign In</h1>
               <p className="text-white ">The key to happiness is to sign in.</p>
             </div>
-            <div className="d-block p-4">
+            <div className="d-block">
               <form onSubmit={handleSubmit(submitForm)}>
-                <div className=" mx-auto">
-                  <h5 className="text-white ">Username</h5>
+                <div className="mb-3">
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Username"
@@ -70,7 +73,7 @@ function Login() {
                       placeholder="Username"
                       {...register("username", {
                         required: {
-                          value: "true",
+                          value: true,
                           message: "* Username is required",
                         },
                         minLength: {
@@ -82,14 +85,14 @@ function Login() {
                           message: "* Username is Too Big",
                         },
                       })}
+                      className="form-control-lg"
                     />
                   </FloatingLabel>
                   {errors.username?.message && (
                     <p className="text-danger">{errors.username?.message}</p>
                   )}
                 </div>
-                <div className=" mx-auto">
-                  <h5 className="text-white">password</h5>
+                <div className="mb-3">
                   <FloatingLabel
                     controlId="floatingInput1"
                     label="Password"
@@ -100,7 +103,7 @@ function Login() {
                       placeholder="Password"
                       {...register("password", {
                         required: {
-                          value: "true",
+                          value: true,
                           message: "* Password is required",
                         },
                         minLength: {
@@ -112,33 +115,28 @@ function Login() {
                           message: "* Password is Too Big",
                         },
                       })}
+                      className="form-control-lg"
                     />
                   </FloatingLabel>
                   {errors.password?.message && (
                     <p className="text-danger">{errors.password?.message}</p>
                   )}
                 </div>
-                <p className="text-white ">
+                <p className="text-white mb-3">
                   Forget Password?
                   <NavLink className="p-3" to="/reset-password">
                     Reset here
                   </NavLink>
                 </p>
-                {/* <p className="text-white ">
-                  Faculty?
-                  <NavLink className="p-3" to="/faculty-login">
-                    Login here
-                  </NavLink>
-                </p> */}
-                <div className="p-2 text-center ">
+                <div className="text-center">
                   {loginErr?.length !== 0 && (
-                    <p className="text-danger text-left text-center">
+                    <p className="text-danger text-left text-center mb-3">
                       {loginErr}
                     </p>
                   )}
                   <Button
                     type="submit"
-                    className="col-lg-3 bg-success border-success fw-bold"
+                    className="col-lg-6 bg-secondary border-secondary fw-bold"
                     disabled={isSubmitting}
                   >
                     {loading ? 'Logging in...' : 'Login'}
@@ -152,4 +150,5 @@ function Login() {
     </animated.div>
   );
 }
-export default Login
+
+export default Login;

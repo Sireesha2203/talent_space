@@ -11,25 +11,30 @@ function RootLayout() {
     ] = useContext(webContext);
   changeSideBarStatus(false)
   return (
-    <div>
+    <div className='Back'>
       <NavigationBar />
-      <div style={{minHeight:"100vh"}}>
-        {sideBarStatus?
-        <div className='d-flex flex-wrap'>
-          <div className='col-12 col-sm-2'>
-            <h1>Basic Features</h1>
+      {sideBarStatus?
+      <div className='page-content'>
+        <div className='container '>
+          <div className='row'>
+            <div className='col-12 col-sm-2'>
+              <h1>Basic Features</h1>
+            </div>
+            <div className='col-12 col-sm-8'>
+              <Outlet />
+            </div>
+            <div className='col-12 col-sm-2'>
+              <h1>Additional Things</h1>
+            </div>
           </div>
-          <div className='col-12 col-sm-8'>
-            <Outlet />
+        </div>
+      </div>:
+        <div className='page-content'>
+          <div className='container '>             
+            <Outlet />              
           </div>
-          <div className='col-12 col-sm-2'>
-            <h1>Additional Things</h1>
-          </div>
-        </div>:
-        <div>
-            <Outlet />
-        </div>}
-      </div>
+        </div>
+      }
       <Footer />
     </div>
     
