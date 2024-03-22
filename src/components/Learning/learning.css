@@ -1,0 +1,19 @@
+/* learning.css */
+
+/* Set fixed dimensions for the course images */
+.card-img-top {
+    width: 100%;
+    height: 50%; /* Adjust height as needed */
+    object-fit: cover;
+  }
+  
+  /* Add margin between the buttons */
+  .category-buttons button {
+    margin-right: 10px;
+  }
+  
+  /* Add margin between the course cards */
+  .course-cards .card {
+    margin-bottom: 20px;
+  }
+  
