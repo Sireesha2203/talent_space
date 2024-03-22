@@ -306,15 +306,15 @@ userApp.put('/update-other', verifyToken, expressAsyncHandler(async (req, res) =
         text: 'Your user details have been modified.',
       };
 
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.error('Error sending email:', error);
-          res.status(500).json({ message: 'Error sending email' });
-        } else {
-          console.log('Email sent: ' + info.response);
-          res.status(200).json({ message: 'User details modified. Email sent.' });
-        }
-      });
+      // transporter.sendMail(mailOptions, function (error, info) {
+      //   if (error) {
+      //     console.error('Error sending email:', error);
+      //     res.status(500).json({ message: 'Error sending email' });
+      //   } else {
+      //     console.log('Email sent: ' + info.response);
+      //     res.status(200).json({ message: 'User details modified. Email sent.' });
+      //   }
+      // });
     }
   } catch (error) {
     console.error('Error updating user details:', error);

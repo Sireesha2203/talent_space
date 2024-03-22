@@ -12,6 +12,7 @@ import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile'
 import SharePost from './components/Home/SharePost'
 import CollaboratePost from './components/Home/CollaboratePost'
+import FormComponent from './pages/Dashboard/FormComponent';
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
         {
           path: "/",
           element: <Home/>
+        },
+        {
+          path:'/form',
+          element:<FormComponent/>
         },
         {
           path: "/SharePost",
