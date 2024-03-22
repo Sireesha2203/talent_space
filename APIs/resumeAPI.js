@@ -17,12 +17,8 @@ resumeApp.post('/parse-resume', upload.single('resume'), async (req, res) => {
 
         // Parse the uploaded resume file
         const resumeText = await parseResume(pdfBuffer);
-
-        // Generate text output using a template
-        const outputText = generateOutput(resumeText);
-
-        // Send the generated text as response
-        res.send(outputText);
+        console.log(resumeText)
+        res.send(resumeText);
     } catch (error) {
         console.error('Error processing resume:', error);
         res.status(500).send('Error processing resume');
@@ -39,30 +35,6 @@ async function parseResume(pdfBuffer) {
     }
 }
 
-// Function to generate output text using a template
-function generateOutput(resumeText) {
-    try {
-        // Load a template document
-        const templateContent = fs.readFileSync('template.docx', 'binary');
-        const doc = new Docxtemplater();
-        doc.loadZip(new Buffer.from(templateContent, 'binary'));
-
-        // Set data to be filled in the template
-        const data = {
-            resumeText: resumeText,
-        };
-
-        // Apply data to the template
-        doc.setData(data);
-        doc.render();
-
-        // Get the generated text
-        const generatedText = doc.getZip().generate({ type: 'nodebuffer' });
-        return generatedText.toString('utf8');
-    } catch (error) {
-        throw new Error('Error generating output text');
-    }
-}
 
 // Export express router
 module.exports = resumeApp;
