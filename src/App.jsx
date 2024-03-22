@@ -10,6 +10,8 @@ import Learning from './components/Learning/Learning';
 import Network from './components/Network/Network'
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile'
+import SharePost from './components/Home/SharePost'
+import CollaboratePost from './components/Home/CollaboratePost'
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +23,14 @@ function App() {
         {
           path: "/",
           element: <Home/>
+        },
+        {
+          path: "/SharePost",
+          element: <SharePost />,
+        },
+        {
+          path: "/CollaboratePost",
+          element: <CollaboratePost />,
         },
         {
           path: "/login",
