@@ -1,40 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
-import NavigationBar from "../components/Navbar/NavigationBar";
-import Footer from "../components/Footer/Footer";
-import "./RootLayout.css";
-import { SpinnerDotted } from "spinners-react";
-import { ToastContainer } from "react-toastify";
+import React from 'react'
+import Footer from '../components/Footer/Footer'
+import NavigationBar from '../components/Navbar/NavigationBar'
+import {Outlet} from 'react-router-dom'
 
-
-function RouteLayout() {
-  const [loading, setLoading] = useState(false);
-
+function RootLayout() {
   return (
-    <animated.div>
-      {loading ? (
-        <div className="containerloading text-center">
-          <SpinnerDotted speed={140} thickness={300} enabled={true} />
-        </div>
-      ) : (
-        // Render content once data is loaded
-        <div className="content-container rot">
-          <div>
-              {/* <NavigationBar/> */}
-
+    <div>
+      <NavigationBar />
+      <div style={{minHeight:"100vh"}}>
+        <div className='d-flex flex-wrap'>
+          <div className='col-12 col-sm-2'>
+            <h1>Basic Features</h1>
           </div>
-          <div className="page">
-            {/* Render your components based on designData */}
+          <div className='col-12 col-sm-8'>
             <Outlet />
           </div>
-          {/* <div className="footer-container">
-            <Footer />
-          </div> */}
+          <div className='col-12 col-sm-2'>
+            <h1>Additional Things</h1>
+          </div>
         </div>
-      )}
-    </animated.div>
-  );
+      </div>
+      <Footer />
+    </div>
+    
+  )
 }
 
-export default RouteLayout;
+export default RootLayout

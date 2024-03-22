@@ -1,0 +1,51 @@
+.HomeContainer{
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+}
+
+.profile-card {
+  width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 5px;
+}
+
+.share-field {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 120px;
+  margin: 5px;
+}
+
+.post-form {
+  margin-top: 20px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.options button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,34 +1,77 @@
-.nav-bar {
-    margin: 15px;
-    border-radius: 20px;
-  /* background: linear-gradient(-225deg, #7742B2 0%, #F180FF 52%, #FD8BD9 100%); */
-  /* background-color:teal;
-    background-image: linear-gradient(-316deg, #3eb2b2 10%, #7f2981 40%); */
-  /* background-image: url("/public/media/87399.jpg"); */
+.nav {
+  /* Adjust padding and margin as needed */
+  padding: 10px 20px;
+  margin-bottom: 20px;
 }
-.bd2{
-  font-family: 'Lato', sans-serif;
+
+.navbar {
+  /* Remove default Bootstrap border and adjust background color */
+  border: none;
+  background-color: #f8f9fa; /* Light gray background */
 }
-.collapse-nav {
-  text-align: justify;
+
+.left-side,
+.right-side {
+  /* Set flexbox properties for horizontal layout */
+  display: flex;
+  align-items: center; /* Vertically center content */
 }
-.btn {
-  color: var(--clr-accent);
-  background-color: var(--clr- rgba);
-  border: 10px solid var(--clr-accent);
-  border-radius: 10px;
-  transition-property: transform;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 1s;
-  transition: transform 0.3s ease;
+
+.navbar-brand {
+  /* Style the logo */
+  display: flex;
+  align-items: center; /* Vertically center logo text */
+  margin-right: 10px; /* Add some spacing after the logo */
 }
-.btn:hover {
-  border: 1px solid white;
-  background-color: teal;
-  transform: translateY(-4px);
+
+.logo {
+  /* Style the logo image */
+  width: 40px; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  margin-right: 5px; /* Add spacing between logo and text */
 }
-.btn:active {
-  transition: 0.3s;
-  transform: scale(0.93);
+
+.logo-text {
+  /* Style the logo text */
+  font-weight: bold; /* Make the logo text bolder */
+}
+
+.form-inline {
+  /* Adjust search bar width for responsiveness */
+  flex: 1; /* Allow the form to grow and fill the available space */
+}
+
+.learning-icon {
+  /* Style the learning icon */
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  /* Style the learning icon image */
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  margin-right: 5px; /* Add spacing between icon and text */
+}
+
+.icon-text {
+  /* Style the learning icon text */
+  /* Adjust font-weight as needed */
+}
+
+/* Optional media query for smaller screens */
+@media (max-width: 768px) {
+  .left-side,
+  .right-side {
+    /* Stack logo and search bar vertically on smaller screens */
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    margin: 5px 0; /* Add some margin between stacked elements */
+  }
+
+  .logo-text,
+  .icon-text {
+    /* Adjust font size for smaller screens */
+    font-size: 14px; /* Adjust as needed */
+  }
 }
