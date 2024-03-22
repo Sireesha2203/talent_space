@@ -27,7 +27,7 @@ const Feed = () => {
   return (
     <div className="feeds">
       <h1>Posts</h1>
-      {postData.map(post => (
+      {postData?.map(post => (
         <div className="post" key={post._id}>
           <div className="postWrapper">
             <div className="postTop">
