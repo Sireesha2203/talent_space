@@ -1,41 +1,43 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useState } from 'react';
+import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { FaHome, FaUsers, FaGraduationCap, FaUser, FaSearch } from 'react-icons/fa'; // Import icons for navigation links
 
+function TalentSpaceNavbar() {
+  const [showSearch, setShowSearch] = useState(false);
 
-function NavScrollExample() {
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container fluid>
-        <Navbar.Brand href="#">Talent Space</Navbar.Brand>
-        <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+    <Navbar expand="lg" bg="light" variant="light" className="shadow-sm">
+      <Container>
+        <Navbar.Brand href="/" className="fw-bold">Talent Space</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="m-auto my-5 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/network">Network</Nav.Link>
-            <Nav.Link href='/learning'>Learning</Nav.Link>
-            <Nav.Link href='/profile'>Profile</Nav.Link>
+          <Form className="d-flex ms-auto align-items-center">
+            <Button variant="link" onClick={toggleSearch}>
+              <FaSearch />
+            </Button>
+            {showSearch && (
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+            )}
+          </Form>
+          <Nav className="ms-auto align-items-center">
+            <Nav.Link href="/" className="fw-bold"><FaHome className="me-1" /> Home</Nav.Link>
+            <Nav.Link href="/network" className="fw-bold"><FaUsers className="me-1" /> Network</Nav.Link>
+            <Nav.Link href="/learning" className="fw-bold"><FaGraduationCap className="me-1" /> Learning</Nav.Link>
+            <Nav.Link href="/profile" className="fw-bold"><FaUser className="me-1" /> Profile</Nav.Link>
           </Nav>
-          
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
 
-export default NavScrollExample;
+export default TalentSpaceNavbar;
