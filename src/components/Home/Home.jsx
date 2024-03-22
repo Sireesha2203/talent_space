@@ -28,6 +28,7 @@ const Home = () => {
 
   return (
     <div className="HomeContainer">
+      
       <div className="profile-card">
         <div className="profile-info">
           <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Profile" className="profile-picture" />
@@ -49,11 +50,12 @@ const Home = () => {
           </form>
         </div>
       )}
-      <div>
-      <Feed/>
+
+      <div> 
       </div>
-      
+      <Feed/>
     </div>
+    
   );
 };
 

@@ -3,6 +3,8 @@ import Footer from '../components/Footer/Footer'
 import NavigationBar from '../components/Navbar/NavigationBar'
 import {Outlet} from 'react-router-dom'
 import { webContext } from '../contexts/webContext'
+import Streak from '../components/Activity/Streak'
+import './RootLayout.css'
 function RootLayout() {
   
   const [
@@ -17,9 +19,12 @@ function RootLayout() {
       <div className='page-content'>
         <div className='container '>
           <div className='row'>
-            <div className='col-12 col-sm-2'>
-              <h1>Basic Features</h1>
-            </div>
+
+          <div className='col-12 col-sm-2'>
+            <Streak/>
+          </div>
+          
+
             <div className='col-12 col-sm-8'>
               <Outlet />
             </div>
@@ -30,8 +35,11 @@ function RootLayout() {
         </div>
       </div>:
         <div className='page-content'>
-          <div className='container '>             
-            <Outlet />              
+          <div className='container '>    
+          <div className="row">
+            <div className="col-12"><Outlet /> </div>
+          </div>         
+                         
           </div>
         </div>
       }

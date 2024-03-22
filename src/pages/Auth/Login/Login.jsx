@@ -14,7 +14,7 @@ function Login() {
   sideBarStatus,
   changeSideBarStatus
   ] = useContext(webContext);
-changeSideBarStatus(false)
+  changeSideBarStatus(false)
   let [, loginUser, userLoginStatus, loginErr,] = useContext(loginContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -42,21 +42,11 @@ changeSideBarStatus(false)
   });
 
   return (
-    <animated.div style={fadeInFromLeftAnimation} className="container p-4">
+    <animated.div style={fadeInFromLeftAnimation} className="Lcontainer p-4">
       <div className="row">
-        <div className="col-lg-6 col-md-6 col-sm-12">
-          <img
-            className="image1"
-            src="media/UserData.png"
-            alt="Card"
-            width="100%"
-            height="100%"
-          />
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 p-4 border bg-white bg-opacity-10 image1">
+        <div className="col-lg-6 col-md-6 col-sm-12 p-4 border bg-white bg-opacity-10 ">
           <div className="card-body" width="100%" height="100%">
             <div className="text-center mb-4">
-              {/* <h2 className="text-center text-white fs-1">Administrator</h2> */}
               <h1 className="text-white ">Sign In</h1>
               <p className="text-white ">The key to happiness is to sign in.</p>
             </div>

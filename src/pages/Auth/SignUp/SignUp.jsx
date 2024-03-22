@@ -1,186 +1,88 @@
-import React, { useContext , useEffect , useState } from 'react'
-import axios from "axios";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { NavLink, useNavigate } from 'react-router-dom';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from "react-hook-form";
-import { webContext } from '../../../contexts/webContext';
 
 function SignUp() {
-    let [
-      sideBarStatus,
-      changeSideBarStatus
-      ] = useContext(webContext);
-    changeSideBarStatus(false)
-    const [refresh, setRefresh] = useState(false);
-    const [newUser,setNewUser] = useState({});
-    //use form hook
-    let {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-    let [selectedFile,setSelectedFile]=useState(null);
-    const onFileSelect=(e)=>{
-      setSelectedFile(e.target.files[0])
-     }
-    let navigate=useNavigate();
-    const handleAddUser = async () => {
-        try {
-          
-          let fd=new FormData();
-          //append selected file to form data
-          fd.append("photo",selectedFile)
-          await axios.post('/user-api/upload-file',fd)
-          .then(res=>{
-            newUser.profilepic=res.data.filePath;
-          })
-          // Validate the new user object
-          if (!newUser.username || !newUser.email || !newUser.type || !newUser.password || !newUser.profilepic) {
-            toast.error('Please fill in all fields', {
-              position: 'top-center',
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: 'light',
-            });
-            return;
-          }
-          // Send the new user object to the backend
-          const response = await axios.post('/user-api/user-signup', newUser);
-          // Handle the response
-          console.log(response); // Log the response message or handle it accordingly
-          // Trigger a refresh to update the user list
-          setRefresh(!refresh);
-    
-          // Close the add user form
-    
-          // Notification using react-toastify
-          toast.success(response.data.message, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-          setTimeout(() => {
-            
-          }, 3000);
-          navigate('/login')
-        } catch (error) {
-          console.error('Error adding user:', error);
-          // Handle error (e.g., show an error message to the user)
-          toast.error(error.message, {
-            position: 'top-center',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          });
-        }
-      };
-      return (
-        <div>
-          <ToastContainer />
-          <div>
-            <h1>Sign Up</h1>
-              <div className="signup-form">
-                <form>
-                  <div className="mb-3">
-                    <label htmlFor="username" className="form-label">
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="username"
-                      value={newUser.username}
-                      onChange={(e) =>
-                        setNewUser({ ...newUser, username: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="email" className="form-label">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="email"
-                      value={newUser.email}
-                      onChange={(e) =>
-                        setNewUser({ ...newUser, email: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="type" className="form-label">
-                      Type
-                    </label>
-                    <select
-                      className="form-select"
-                      id="type"
-                      value={newUser.type}
-                      onChange={(e) =>
-                        setNewUser({ ...newUser, type: e.target.value })
-                      }
-                    >
-                      <option disabled selected>Select User Type</option>
+  const navigate = useNavigate();
+  const [newUser, setNewUser] = useState({});
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const handleSignUp = async (userData) => {
+    try {
+      // Perform signup logic here
+      console.log(userData);
+      navigate('/login'); // Redirect to login page after signup
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
+  };
+
+  return (
+    <div className="container p-4">
+      <div className="row justify-content-center">
+        <div className="col-lg-6 col-md-6 col-sm-12 p-4 border bg-white bg-opacity-10 ">
+          <div className="card-body">
+            <div className="text-center mb-4">
+              <h1 className="text-white">Sign Up</h1>
+              <p className="text-white">Create your account to get started.</p>
+            </div>
+            <div className="d-block">
+              <form onSubmit={handleSubmit(handleSignUp)}>
+                <div className="mb-3">
+                  <FloatingLabel controlId="username" label="Username" className="mb-3">
+                    <Form.Control type="text" placeholder="Username" {...register("username")} className="form-control-lg" />
+                  </FloatingLabel>
+                  {errors.username?.message && (
+                    <p className="text-danger">{errors.username?.message}</p>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <FloatingLabel controlId="email" label="Email" className="mb-3">
+                    <Form.Control type="email" placeholder="Email" {...register("email")} className="form-control-lg" />
+                  </FloatingLabel>
+                  {errors.email?.message && (
+                    <p className="text-danger">{errors.email?.message}</p>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <FloatingLabel controlId="password" label="Password" className="mb-3">
+                    <Form.Control type="password" placeholder="Password" {...register("password")} className="form-control-lg" />
+                  </FloatingLabel>
+                  {errors.password?.message && (
+                    <p className="text-danger">{errors.password?.message}</p>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <FloatingLabel controlId="type" label="User Type" className="mb-3">
+                    <Form.Select {...register("type")} className="form-control-lg">
                       <option value="user">User</option>
                       <option value="recruiter">Recruiter</option>
-                    </select>
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="password" className="form-label">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      value={newUser.password}
-                      onChange={(e) =>
-                        setNewUser({ ...newUser, password: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="profile" className="form-label">
-                      Profile
-                    </label>
-                    <input
-                      type="file"
-                      id="image"
-                      className="form-control"
-                      {...register("image", { required: true })}
-                      onInput={onFileSelect}
-                    />
-                    <input type="image" src="" alt="" />
-                  </div>
-                </form>
-              </div>
-              <Button
-                style={{ width: "10vw", color: "white" }}
-                type="button"
-                className="btn btn-primary"
-                onClick={handleAddUser}
-              >
-                SignUp
-              </Button>
+                    </Form.Select>
+                  </FloatingLabel>
+                </div>
+                <div className="mb-3">
+                  <FloatingLabel controlId="profile" label="Profile Picture" className="mb-3">
+                    <Form.Control type="file" {...register("profile")} className="form-control-lg" />
+                  </FloatingLabel>
+                </div>
+                <div className="text-center">
+                  <Button type="submit" className="col-lg-6 bg-secondary border-secondary fw-bold">
+                    Sign Up
+                  </Button>
+                </div>
+              </form>
+              <p className="text-white mt-3">
+                Already have an account? <NavLink to="/login">Log In</NavLink>
+              </p>
             </div>
+          </div>
         </div>
-      );
+      </div>
+    </div>
+  );
 }
 
-export default SignUp
+export default SignUp;

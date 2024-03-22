@@ -276,6 +276,51 @@ userApp.put('/change-password/:username', verifyToken, expressAsyncHandler(async
     res.status(500).send({ message: `Error changing password: ${error.message}` });
   }
 }));
+// Update User Credentials Route
+userApp.put('/update-other', verifyToken, expressAsyncHandler(async (req, res) => {
+  try {
+    // get user collection object
+    const userCollectionObj = req.app.get("userCollectionObj");
+
+    // get modified user from the client
+    let modifiedUser = req.body;
+    modifiedUser.username = modifiedUser.username.toLowerCase();
+    let oldUsername = modifiedUser.username;
+    // get user from the database
+    let userOfDB = await userCollectionObj.findOne(
+      { username : oldUsername}
+    );
+
+    // if username is invalid
+    if (!userOfDB) {
+      res.status(200).send({ message: "Invalid Username" });
+    } else {
+      // update user details in the database
+      await userCollectionObj.updateOne({ username: oldUsername }, { $set: { ...modifiedUser} });
+
+      // send an email to the user
+      const mailOptions = {
+        from: process.env.OUTLOOK_EMAIL,
+        to: userOfDB.email, // Assuming user.email is available in your user object
+        subject: 'User Details Modified - FIS',
+        text: 'Your user details have been modified.',
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.error('Error sending email:', error);
+          res.status(500).json({ message: 'Error sending email' });
+        } else {
+          console.log('Email sent: ' + info.response);
+          res.status(200).json({ message: 'User details modified. Email sent.' });
+        }
+      });
+    }
+  } catch (error) {
+    console.error('Error updating user details:', error);
+    res.status(500).json({ message: 'Error updating user details' });
+  }
+}));
 
 // Update User Credentials Route
 userApp.put('/update', verifyToken, expressAsyncHandler(async (req, res) => {
