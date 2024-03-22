@@ -26,7 +26,7 @@ const userApp=require("./APIs/userAPI")
 app.use("/user-api",userApp)
 //connect user api
 const resumeApp=require("./APIs/resumeAPI")
-app.use("/resume-api",userApp)
+app.use("/resume-api",resumeApp)
 
 //connect to mongoclient
 const mclient=require('mongodb').MongoClient
