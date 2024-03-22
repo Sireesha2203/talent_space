@@ -27,6 +27,8 @@ app.use("/user-api",userApp)
 //connect user api
 const resumeApp=require("./APIs/resumeAPI")
 app.use("/resume-api",resumeApp)
+const postsApp=require("./APIs/postsAPI")
+app.use("/posts-api",postsApp)
 
 //connect to mongoclient
 const mclient=require('mongodb').MongoClient
@@ -39,6 +41,8 @@ mclient
     const dbObj = dbRef.db("talent_space");
     const userCollectionObj = dbObj.collection("userCollection");
     app.set("userCollectionObj", userCollectionObj);
+    const postCollectionObj = dbObj.collection("postCollection");
+    app.set("postCollectionObj", postCollectionObj);
     console.log("Connection to Talent-Space DB - Success");
   })
   .catch((err) => console.log("Connection to Faculty-Portal DB - Failed"));
