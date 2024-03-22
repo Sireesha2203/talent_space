@@ -5,8 +5,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { webContext } from '../../../contexts/webContext';
 
 function SignUp() {
+    let [
+      sideBarStatus,
+      changeSideBarStatus
+      ] = useContext(webContext);
+    changeSideBarStatus(false)
     const [refresh, setRefresh] = useState(false);
     const [newUser,setNewUser] = useState({});
     //use form hook
@@ -31,7 +37,7 @@ function SignUp() {
             newUser.profilepic=res.data.filePath;
           })
           // Validate the new user object
-          if (!newUser.username || !newUser.email || !newUser.type || !newUser.password || !newUser.profile) {
+          if (!newUser.username || !newUser.email || !newUser.type || !newUser.password || !newUser.profilepic) {
             toast.error('Please fill in all fields', {
               position: 'top-center',
               autoClose: 5000,

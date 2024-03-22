@@ -7,7 +7,13 @@ import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { Button } from 'react-bootstrap';
 import { useSpring,animated } from 'react-spring';
+import { webContext } from '../../../contexts/webContext';
 function Login() {
+    let [
+    sideBarStatus,
+    changeSideBarStatus
+    ] = useContext(webContext);
+  changeSideBarStatus(false)
   let [, loginUser, userLoginStatus, loginErr,] = useContext(loginContext)
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);

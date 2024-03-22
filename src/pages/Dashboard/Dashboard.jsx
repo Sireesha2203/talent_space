@@ -4,8 +4,14 @@ import { useContext } from "react";
 import Recruiter from './Recruiter';
 import User from './User';
 import { useSpring, animated } from 'react-spring';
+import { webContext } from '../../contexts/webContext';
 
 function Dashboard() {
+  const [
+    sideBarStatus,
+    changeSideBarStatus
+    ] = useContext(webContext);
+  changeSideBarStatus(true)
   const [currentUser, , , ,] = useContext(loginContext);
   const fadeOutSlideUpAnimation = useSpring({
     to: async (next) => {

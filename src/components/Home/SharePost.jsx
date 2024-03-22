@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import axios from 'axios';
+import { webContext } from '../../contexts/webContext';
 
 const SharePost = () => {
+  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+  changeSideBarStatus(true)
   const [heading, setHeading] = useState('');
   const [text, setText] = useState('');
   const [imageUrl, setImageUrl] = useState('');

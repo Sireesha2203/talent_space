@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext } from 'react';
+import { webContext } from '../../contexts/webContext';
 import './learning.css'; // Import custom CSS file for additional styling
 import WebDevelopment from '../images/webdevelopment.jpg';
 import DataScience from '../images/datascience.jpg';
@@ -21,6 +22,8 @@ import poet from '../images/poetry.jpg';
 import music from '../images/music.jpg';
 
 const Learning = () => {
+  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+  changeSideBarStatus(true)
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', 'Development', 'Business', 'Design', 'Arts'];

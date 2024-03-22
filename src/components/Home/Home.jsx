@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios';
 import Feed from '../Feed/Feed'
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
+import { webContext } from '../../contexts/webContext';
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);

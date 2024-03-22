@@ -5,8 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { Button } from "react-bootstrap";
 import { loginContext } from "../../../contexts/loginContext";
 import { useNavigate } from "react-router-dom";
+import { webContext } from "../../../contexts/webContext";
 
-function ResetPassword() {
+function ResetPassword() {  
+  let [
+    sideBarStatus,
+    changeSideBarStatus
+    ] = useContext(webContext);
+  changeSideBarStatus(false)
   //for changing password
   const [oldPassword, setOldPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");

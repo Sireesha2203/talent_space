@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import axios from 'axios';
 import './Feed.css';
+import { webContext } from '../../contexts/webContext';
 
 const Feed = () => {
+  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+  changeSideBarStatus(true)
   const [like, setLike] = useState(0); // Initialize like state with 0
   const [postData, setPostData] = useState([]);
 

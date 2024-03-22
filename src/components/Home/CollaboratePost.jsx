@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import { webContext } from '../../contexts/webContext';
 import axios from 'axios';
 
 const CollaboratePost = () => {
+  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+  changeSideBarStatus(true)
   const [projectName, setProjectName] = useState('');
   const [text, setText] = useState('');
   const [skills, setSkills] = useState('');

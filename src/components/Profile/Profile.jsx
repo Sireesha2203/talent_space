@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios';
+import { webContext } from '../../contexts/webContext';
 
 const ProfileBuilder = () => {
+  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+  changeSideBarStatus(true)
   const [name, setName] = useState('');
   const [about, setAbout] = useState('');
   const [education, setEducation] = useState('');
