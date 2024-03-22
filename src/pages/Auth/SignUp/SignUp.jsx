@@ -28,7 +28,7 @@ function SignUp() {
           fd.append("photo",selectedFile)
           await axios.post('/user-api/upload-file',fd)
           .then(res=>{
-            newUser.profile=res.data.filePath;
+            newUser.profilepic=res.data.filePath;
           })
           // Validate the new user object
           if (!newUser.username || !newUser.email || !newUser.type || !newUser.password || !newUser.profile) {

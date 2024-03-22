@@ -189,7 +189,7 @@ function User() {
   return (
     <div className="p-1">
       <h2 className="m-1">Welcome, {userDetails.username}!</h2>
-      <img src={userDetails.profile} className="rounded" height="100vh" width="100vw"/>
+      <img src={userDetails.profilepic} className="rounded" height="100vh" width="100vw"/>
       <hr />
       <div className="p-2">
         <h2>Your Details</h2>

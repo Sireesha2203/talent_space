@@ -14,8 +14,8 @@ const Feed = () => {
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/posts');
-        setPostData(response.data);
+        // const response = await axios.get('http://localhost:5000/posts');
+        // setPostData(response.data);
       } catch (error) {
         console.error('Error fetching post data:', error);
       }
