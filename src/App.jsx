@@ -7,7 +7,7 @@ import ErrorPage from './pages/Errorpage/ErrorPage';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Learning from './components/Learning/Learning';
-import Network from './components/Learning/Learning'
+import Network from './components/Network/Network'
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile'
 

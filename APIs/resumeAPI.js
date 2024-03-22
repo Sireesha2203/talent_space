@@ -1,6 +1,5 @@
 const express = require('express');
 const PDFParser = require('pdf-parse');
-const { Docxtemplater } = require('docxtemplater');
 const multer = require('multer');
 
 const resumeApp = express.Router();
