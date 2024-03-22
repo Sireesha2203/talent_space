@@ -15,18 +15,16 @@ function TalentSpaceNavbar() {
         <Navbar.Brand href="/" className="fw-bold">Talent Space</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Form className="d-flex ms-auto align-items-center">
-            <Button variant="link" onClick={toggleSearch}>
+          <Form className="d-flex ms-auto align-items-center position-relative">
+            <Button variant="link" onClick={toggleSearch} className="search-icon">
               <FaSearch />
             </Button>
-            {showSearch && (
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-            )}
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className={`search-field ${showSearch ? 'visible' : ''}`}
+              aria-label="Search"
+            />
           </Form>
           <Nav className="ms-auto align-items-center">
             <Nav.Link href="/" className="fw-bold"><FaHome className="me-1" /> Home</Nav.Link>
