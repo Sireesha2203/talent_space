@@ -306,15 +306,15 @@ userApp.put('/update-other', verifyToken, expressAsyncHandler(async (req, res) =
         text: 'Your user details have been modified.',
       };
 
-      // transporter.sendMail(mailOptions, function (error, info) {
-      //   if (error) {
-      //     console.error('Error sending email:', error);
-      //     res.status(500).json({ message: 'Error sending email' });
-      //   } else {
-      //     console.log('Email sent: ' + info.response);
-      //     res.status(200).json({ message: 'User details modified. Email sent.' });
-      //   }
-      // });
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.error('Error sending email:', error);
+          res.status(500).json({ message: 'Error sending email' });
+        } else {
+          console.log('Email sent: ' + info.response);
+          res.status(200).json({ message: 'User details modified. Email sent.' });
+        }
+      });
     }
   } catch (error) {
     console.error('Error updating user details:', error);
@@ -322,6 +322,27 @@ userApp.put('/update-other', verifyToken, expressAsyncHandler(async (req, res) =
   }
 }));
 
+userApp.post('/request-feature',verifyToken,expressAsyncHandler(async(req,resp)=>{
+    let body=req.body.mail;
+    let email=req.body.email
+    // send an email to the user
+    const mailOptions = {
+      from: process.env.OUTLOOK_EMAIL,
+      to: email, // Assuming user.email is available in your user object
+      subject: 'Request for new feature',
+      text:body ,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.error('Error sending email:', error);
+        resp.status(500).json({ message: 'Error sending email' });
+      } else {
+        console.log('Email sent: ' + info.response);
+        resp.status(200).json({ message: 'Feature Requested' });
+      }
+    });
+}))
 // Update User Credentials Route
 userApp.put('/update', verifyToken, expressAsyncHandler(async (req, res) => {
   try {

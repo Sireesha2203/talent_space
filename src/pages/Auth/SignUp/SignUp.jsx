@@ -5,18 +5,58 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { webContext } from '../../../contexts/webContext';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 function SignUp() {
-  let [sideBarStatus, changeSideBarStatus] = useContext(webContext);
+  let [, changeSideBarStatus] = useContext(webContext);
+  const [refresh, setRefresh] = useState(false);
   changeSideBarStatus(false);
   const navigate = useNavigate();
   const [newUser, setNewUser] = useState({});
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  let [selectedFile,setSelectedFile]=useState(null);
+    const onFileSelect=(e)=>{
+      setSelectedFile(e.target.files[0])
+     }
   const handleSignUp = async (userData) => {
     try {
-      // Perform signup logic here
-      console.log(userData);
+      let fd=new FormData();
+          //append selected file to form data
+          fd.append("photo",selectedFile)
+          await axios.post('/user-api/upload-file',fd)
+          .then(res=>{
+            newUser.profilepic=res.data.filePath;
+          })
+          // Validate the new user object
+          if (!newUser.username || !newUser.email || !newUser.type || !newUser.password || !newUser.profilepic) {
+            toast.error('Please fill in all fields', {
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            });
+            return;
+          }
+          const response = await axios.post('/user-api/user-signup', newUser);
+          setRefresh(!refresh);
+          toast.success(response.data.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setTimeout(() => {
+
+          }, 3000);
       navigate('/login'); // Redirect to login page after signup
     } catch (error) {
       console.error('Error signing up:', error);
@@ -25,6 +65,7 @@ function SignUp() {
 
   return (
     <div className="container p-4">
+      <ToastContainer />
       <div className="row justify-content-center">
         <div className="col-lg-6 col-md-6 col-sm-12 p-4 border bg-white bg-opacity-10 ">
           <div className="card-body">
@@ -61,6 +102,7 @@ function SignUp() {
                 <div className="mb-3">
                   <FloatingLabel controlId="type" label="User Type" className="mb-3">
                     <Form.Select {...register("type")} className="form-control-lg">
+                      <option value="" selected disabled>Select User Type</option>
                       <option value="user">User</option>
                       <option value="recruiter">Recruiter</option>
                     </Form.Select>
@@ -68,7 +110,7 @@ function SignUp() {
                 </div>
                 <div className="mb-3">
                   <FloatingLabel controlId="profile" label="Profile Picture" className="mb-3">
-                    <Form.Control type="file" {...register("profile")} className="form-control-lg" />
+                    <Form.Control type="file" {...register("profilepic")} className="form-control-lg" />
                   </FloatingLabel>
                 </div>
                 <div className="text-center">
