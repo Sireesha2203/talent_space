@@ -38,7 +38,7 @@ const Network = () => {
         {users?.map(user => (
           <Col sm={4} key={user._id.$oid}>
             <Card style={{ marginBottom: '20px' }}>
-              <Card.Img variant="top" src={user.profilepic} height="10vh" width="10vw" />
+              <Card.Img variant="top" src={user.profilepic} height="20px" width="20px" />
               <Card.Body>
                 <Card.Title>{user.full_name}</Card.Title>
                 <Card.Text>{user.summary}</Card.Text>
