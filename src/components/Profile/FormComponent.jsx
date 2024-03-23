@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginContext } from '../../contexts/loginContext';
 
 const FormComponent = () => {
-    let [currentUser,loginUser,userLoginStatus,loginErr,logoutUser]=useContext(loginContext);
+    let [currentUser,]=useContext(loginContext);
     let navigate=useNavigate();
     const { register, handleSubmit, control, reset, getValues } = useForm();
     const { fields: projectFields, append: appendProject, remove: removeProject } = useFieldArray({

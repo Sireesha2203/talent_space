@@ -73,10 +73,13 @@ postsApp.post('/create-collabPosts',verifyToken, expressAsyncHandler(async (req,
 // Get all posts
 postsApp.get('/posts-get', expressAsyncHandler(async (req, res) => {
   const postCollectionObj = req.app.get("postCollectionObj"); // Get the postCollection from app settings
-  const posts = await postCollectionObj.find({}).toArray();
   const projectCollectionObj = req.app.get("projectCollectionObj")
-  const projects= await projectCollectionObj.find({}).toArray();
-  res.status(200).json(posts,projects);
+  // Fetch posts sorted by date and time
+  const posts = await postCollectionObj.find({}).sort({ "metadata.post_date": -1, "metadata.post_time": -1 }).toArray();
+  // Fetch projects sorted by date and time
+  const projects = await projectCollectionObj.find({}).sort({ "metadata.post_date": -1, "metadata.post_time": -1 }).toArray();
+
+  res.status(200).json({posts,projects});
 }));
 
 // // Update a post by ID

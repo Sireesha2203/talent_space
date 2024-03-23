@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import './Feed.css';
 import { webContext } from '../../contexts/webContext';
 import { loginContext } from '../../contexts/loginContext';
 import { Button } from 'react-bootstrap';
@@ -35,7 +34,6 @@ const OngoingProj = () => {
           }
         });
         console.log(response.data);
-        setPostData(response.data.posts);
          // Update state with fetched data array
          setProjectData(response.data.projects);
       } catch (error) {
@@ -61,15 +59,13 @@ const OngoingProj = () => {
             </div>
             <div className='postBody'>
                 <span className="postText">{post.heading}</span>
-                <div className="postCenter">
-                  <img src={post.photo_url} alt="" className="postImg" />
-                </div>
+                
                 <span className="postText">{post.text}</span>
             </div>
             <div className="postBottom">
                 <div>
                     <img src="\assets\comment.png" width="25px" alt="" className="likeIcon" />
-                    <span className="postCommentText">{post.collaboraters.count} comments</span>
+                    <span className="postCommentText">{post.collaborators.count} comments</span>
                 </div>
                 <Button
                 style={{ width: "10vw", color: "white" }}

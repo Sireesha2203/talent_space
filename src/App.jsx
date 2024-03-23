@@ -14,6 +14,8 @@ import SharePost from './components/Home/SharePost'
 import CollaboratePost from './components/Home/CollaboratePost'
 import FormComponent from './components/Profile/FormComponent';
 import FeatureRequestForm from './components/FeatureRequestForm';
+import OngoingProj from './components/OngoingProj/OngoingProj'
+
 
 function App() {
   const router = createBrowserRouter([
@@ -69,7 +71,13 @@ function App() {
         {
           path : "/profile",
           element : <Profile/>
+        },
+        {
+          path : "/ongoing",
+          element : <OngoingProj/>
         }
+
+
       ],
     },
   ]);

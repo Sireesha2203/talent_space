@@ -62,8 +62,10 @@ const CollaboratePost = () => {
       <div className="card mt-4">
         <div className="card-body">
           <h2 className="card-title">Collaborate on a Project</h2>
-
-          <form onSubmit={handleSubmit}>
+        <div>
+          <div>          <div><img src={Colabpost} alt="" width='400px'/></div>
+        </div>
+        <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Project title</label>
               <input type="text" className="form-control" value={projectName} onChange={(e) => setProjectName(e.target.value)} required />
@@ -83,6 +85,9 @@ const CollaboratePost = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <button type="submit" className="btn btn-primary">Upload Collaborate Post</button>
           </form>
+</div>
+
+         
         </div>
       </div>
       </div>

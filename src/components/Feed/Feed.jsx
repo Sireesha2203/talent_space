@@ -96,16 +96,12 @@ const Feed = () => {
             </div>
             <div className='postBody'>
                 <span className="postText">{post.heading}</span>
-                <div className="postCenter">
+                {/* <div className="postCenter">
                   <img src={post.photo_url} alt="" className="postImg" />
-                </div>
+                </div> */}
                 <span className="postText">{post.text}</span>
             </div>
             <div className="postBottom">
-                <div>
-                    <img src="\assets\comment.png" width="25px" alt="" className="likeIcon" />
-                    <span className="postCommentText">{post.collaboraters.count} comments</span>
-                </div>
                 <Button
                 style={{ width: "10vw", color: "white" }}
                 type="button"
