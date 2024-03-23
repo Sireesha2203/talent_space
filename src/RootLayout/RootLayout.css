@@ -1,20 +1,22 @@
 .containerloading {
-  width: 100%; /* Set a width that suits your layout */
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to right, #eadfeb, #59045e);
 }
 
-
 .page-content {
-  padding-top: 80px; /* Adjust as per your NavigationBar height */
+  padding-top: 80px;
   min-height: 90vh;
+  background-color: #efecf1; /* Light gray background */
 }
 
 .sidebar {
   position: inline;
 }
+
 .page {
   height: 83vh;
   width: 100vw;
@@ -22,13 +24,15 @@
   overflow: hidden;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: #f0eaeb; /* Light gray background */
 }
-/* Loading.css */
+
 .loader-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 500vh;
+  background: linear-gradient(to right, #cf4fe0, #59045e); /* Gradient background */
 }
 
 .loading-dots {
@@ -39,7 +43,7 @@
 .loading-dot {
   width: 10px;
   height: 10px;
-  background-color: #3498db;
+  background-color: #f5edf7; /* White loading dots */
   border-radius: 50%;
   margin: 0 5px;
   animation: pulse 0.6s infinite alternate;
@@ -58,12 +62,13 @@
   animation-delay: 0.6s;
 }
 
-
-.Back{
-  background: linear-gradient(to right, #085078, #85D8CE);
+.Back {
+  background: linear-gradient(to right, #020102, #030103); /* Gradient background */
 }
+
 @keyframes pulse {
   to {
     opacity: 1;
   }
 }
+

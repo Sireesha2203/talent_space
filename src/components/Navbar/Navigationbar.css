@@ -1,11 +1,11 @@
 .search-icon {
   font-size: 1.5rem;
-  color: #6c757d; /* Adjust icon color */
+  color: #faedfa; /* Adjust icon color */
   transition: color 0.3s ease-in-out;
 }
 
 .search-icon:hover {
-  color: #495057; /* Change icon color on hover */
+  color: #18051a; /* Change icon color on hover */
 }
 
 .search-field {
@@ -24,6 +24,6 @@
   padding: 0.375rem 0.75rem;
   margin-left: 10px; /* Adjust margin as needed */
   border-radius: 0.25rem; /* Add border radius for rounded edges */
-  background-color: #f8f9fa; /* Background color for search field */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  background-color: #d497e9; /* Background color for search field */
+  box-shadow: 0px 0px 10px rgba(9, 9, 9, 0.1); /* Add shadow for depth */
 }

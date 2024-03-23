@@ -9,10 +9,10 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Learning from './components/Learning/Learning';
 import Network from './components/Network/Network'
 import Home from './components/Home/Home';
-import Profile from './components/Profile/Profile'
+import Profile from './components/Profile/FormComponent'
 import SharePost from './components/Home/SharePost'
 import CollaboratePost from './components/Home/CollaboratePost'
-import FormComponent from './pages/Dashboard/FormComponent';
+import FormComponent from './components/Profile/FormComponent';
 
 function App() {
   const router = createBrowserRouter([

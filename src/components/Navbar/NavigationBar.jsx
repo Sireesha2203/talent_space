@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { FaHome, FaUsers, FaGraduationCap , FaFileSignature , FaAddressBook, FaUser, FaSearch } from 'react-icons/fa'; // Import icons for navigation links
+import { Link } from 'react-router-dom';
 
 function TalentSpaceNavbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -27,14 +28,14 @@ function TalentSpaceNavbar() {
   };
 
   return (
-    <Navbar expand="lg" variant="light" className="shadow-sm fixed-top" style={{ backgroundImage: navbarBackground, borderBottom: 'none' }}>
+    <Navbar expand="lg" variant="light" className="shadow-sm fixed-top" style={{ background: '#59045e', borderBottom: 'none' }}>
       <Container>
         <Navbar.Brand href="/" className="fw-bold" style={{ color: '#fff' }}>Talent Space</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Form className="d-flex ms-auto align-items-center position-relative">
             <Button variant="link" onClick={toggleSearch} className="search-icon">
-              <FaSearch style={{ color: '#fff' }} />
+              <FaSearch style={{ color:'white' }} />
             </Button>
             <FormControl
               type="search"
@@ -45,12 +46,12 @@ function TalentSpaceNavbar() {
             />
           </Form>
           <Nav className="ms-auto align-items-center">
-            <Nav.Link href="/" className="fw-bold" style={{ color: '#fff' }}><FaHome className="me-1" /> Home</Nav.Link>
-            <Nav.Link href="/network" className="fw-bold" style={{ color: '#fff' }}><FaUsers className="me-1" /> Network</Nav.Link>
-            <Nav.Link href="/learning" className="fw-bold" style={{ color: '#fff' }}><FaGraduationCap className="me-1" /> Learning</Nav.Link>
-            <Nav.Link href="/profile" className="fw-bold" style={{ color: '#fff' }}><FaUser className="me-1" /> Profile</Nav.Link>
-            <Nav.Link href="/login" className="fw-bold" style={{ color: '#fff' }}><FaFileSignature className="me-1" /> Loign</Nav.Link>
-            <Nav.Link href="/signup" className="fw-bold" style={{ color: '#fff' }}><FaAddressBook className="me-1" /> Sign Up</Nav.Link>
+          <Link to="/" className="fw-bold nav-link" style={{ color: '#fff' }}><FaHome className="me-1" /> Home</Link>
+            <Link to="/network" className="fw-bold nav-link" style={{ color: '#fff' }}><FaUsers className="me-1" /> Network</Link>
+            <Link to="/learning" className="fw-bold nav-link" style={{ color: '#fff' }}><FaGraduationCap className="me-1" /> Learning</Link>
+            <Link to="/profile" className="fw-bold nav-link" style={{ color: '#fff' }}><FaUser className="me-1" /> Profile</Link>
+            <Link to="/login" className="fw-bold nav-link" style={{ color: '#fff' }}><FaFileSignature className="me-1" /> Loign</Link>
+            <Link to="/signup" className="fw-bold nav-link" style={{ color: '#fff' }}><FaAddressBook className="me-1" /> Sign Up</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

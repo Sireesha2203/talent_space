@@ -10,7 +10,7 @@ const SharePost = () => {
   let[currentUser]=useContext(loginContext)
   const [heading, setHeading] = useState('');
   const [text, setText] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [photo_url, setImageUrl] = useState('');
   const [tags,setTags]=useState('');
   const [error, setError] = useState(null);
 
@@ -18,17 +18,21 @@ const SharePost = () => {
     e.preventDefault();
     setError(null); // Clear previous errors
 
-    try {
+    try {// Split tags by '#' and remove empty strings and spaces
+      let tagsArray = tags.split('#').map(tag => tag.trim()).filter(tag => tag !== '');
+    
       const newPost = {
         heading,
-        photo_url: imageUrl,
+        photo_url,
         text,
         metadata: {
           username: `${currentUser.username}`,
           post_date: new Date().toISOString().split('T')[0],
           post_time: new Date().toLocaleTimeString(),
-        }
+        },
+        tags:tagsArray
       };
+      
       let token = localStorage.getItem('token')
       // Send a POST request to the JSON Server endpoint to add the new post
       const response = await axios.post('http://localhost:5000/posts-api/create-post', newPost,
@@ -64,7 +68,7 @@ const SharePost = () => {
         </Form.Group>
         <Form.Group controlId="formImageUrl">
           <Form.Label>Image URL</Form.Label>
-          <Form.Control type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+          <Form.Control type="url" value={photo_url} onChange={(e) => setImageUrl(e.target.value)} required />
         </Form.Group>
         <Form.Group controlId="formTags">
           <Form.Label>Tags</Form.Label>

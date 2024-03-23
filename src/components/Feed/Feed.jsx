@@ -1,24 +1,24 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import './Feed.css';
 import { webContext } from '../../contexts/webContext';
 
 const Feed = () => {
-  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
-  changeSideBarStatus(true)
+  let [sideBarStatus, changeSideBarStatus] = useContext(webContext);
+  changeSideBarStatus(true);
   const [like, setLike] = useState(0); // Initialize like state with 0
   const [postData, setPostData] = useState([]);
 
   const likeHandler = () => {
-    
     setLike(like => (like ? like - 1 : like + 1));
   };
 
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        // const response = await axios.get('http://localhost:5000/posts');
-        // setPostData(response.data);
+        const response = await axios.get('/posts-api/posts-get');
+        console.log(response.data);
+        setPostData(response.data); // Update state with fetched data array
       } catch (error) {
         console.error('Error fetching post data:', error);
       }
@@ -30,12 +30,12 @@ const Feed = () => {
   return (
     <div className="feeds">
       <h1>Posts</h1>
-      {postData?.map(post => (
+      {postData.map(post => (
         <div className="post" key={post._id}>
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                <img src={post.prof_url} alt="" className="postProf" />
+                <img src={post.photo_url} alt="" className="postProf" />
                 <span className="postUsername">{post.metadata.username}</span>
                 <span className="postDate">{post.metadata.post_date}</span>,
                 <span className="postDate">{post.metadata.post_time}</span>
@@ -44,7 +44,7 @@ const Feed = () => {
             <div className='postBody'>
                 <span className="postText">{post.heading}</span>
                 <div className="postCenter">
-                <img src={post.photo_url} alt="" className="postImg" />
+                  <img src={post.photo_url} alt="" className="postImg" />
                 </div>
                 <span className="postText">{post.text}</span>
             </div>
@@ -54,13 +54,12 @@ const Feed = () => {
                     <span className="postLikeCounter">{like} people liked it</span>
                 </div>
                 <div className="reactions">
-                    <img src="\assets\share.png" onClick={likeHandler} width="25px" alt="" className="likeIcon" />
+                    <img src="\assets\share.png" width="25px" alt="" className="likeIcon" />
                     <span className="postLikeCounter"> share</span>
                 </div>
-                
                 <div>
-                    <img src="\assets\comment.png" onClick={likeHandler} width="25px" alt="" className="likeIcon" />
-                    <span className="postCommentText">{post.comment} comments</span>
+                    <img src="\assets\comment.png" width="25px" alt="" className="likeIcon" />
+                    <span className="postCommentText">{post.comments.count} comments</span>
                 </div>
             </div>
           </div>

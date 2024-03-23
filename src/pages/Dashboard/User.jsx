@@ -199,7 +199,11 @@ function User() {
               Upload Resume
             </Button>
           </div>
-
+          <div className="p-3">
+            <Button className="btn btn-success" onClick={()=>navigate('/profile')}>
+              Build Profile
+            </Button>
+          </div>
           {/* Modal for file upload */}
           <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton>

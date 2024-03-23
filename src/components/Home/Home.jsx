@@ -27,6 +27,7 @@ const Home = () => {
   };
 
   return (
+    <div>
     <div className="HomeContainer">
       
       <div className="profile-card">
@@ -53,7 +54,9 @@ const Home = () => {
 
       <div> 
       </div>
-      <Feed/>
+    
+    </div>
+    <Feed/>
     </div>
     
   );
