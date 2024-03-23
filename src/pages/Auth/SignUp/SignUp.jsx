@@ -4,8 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import { webContext } from '../../../contexts/webContext';
 
 function SignUp() {
+  let [sideBarStatus, changeSideBarStatus] = useContext(webContext);
+  changeSideBarStatus(false);
   const navigate = useNavigate();
   const [newUser, setNewUser] = useState({});
   const { register, handleSubmit, formState: { errors } } = useForm();
