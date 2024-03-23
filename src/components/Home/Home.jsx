@@ -4,8 +4,12 @@ import Feed from '../Feed/Feed'
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { webContext } from '../../contexts/webContext';
+import { loginContext } from '../../contexts/loginContext';
 
 const Home = () => {
+  let [currentUser,]=useContext(loginContext)
+  let [,changeSideBarStatus]=useContext(webContext)
+  changeSideBarStatus(true)
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
 
@@ -32,7 +36,7 @@ const Home = () => {
       
       <div className="profile-card">
         <div className="profile-info">
-          <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Profile" className="profile-picture" />
+          <img src={currentUser.profilepic} alt="Profile" className="profile-picture" />
           <div className="share-field" onClick={handleShareClick}>
             Share your post...
           </div>

@@ -13,13 +13,13 @@ const FeatureRequestForm = () => {
       // Post data to Axios or your preferred API endpoint
       // Fetch user details from the server
       const token = localStorage.getItem("token");
-      axios
-      .get("/user-api/request-feature",{email:currentUser.email,mail:featureRequest}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      // Clear the form after successful submission
+      // axios
+      // .get("/user-api/request-feature",{email:currentUser.email,mail:featureRequest}, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // })
+      // Clear the form after successful <submiss></submiss>ion
       setFeatureRequest('');
       alert('Feature request submitted successfully!');
     } catch (error) {

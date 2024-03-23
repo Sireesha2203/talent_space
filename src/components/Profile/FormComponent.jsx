@@ -35,6 +35,8 @@ const FormComponent = () => {
       data.posts=[]
       data.skills=(skills.split('\n')).map(line => line.split(',')).flat();
       data.languages=(langs.split('\n')).map(line=> line.split(',')).flat();
+      data.collabRequestsMade=[]
+      data.colabprojects=[]
       const response = await axios.put('/user-api/update-other', data,{
         headers: {
             Authorization: `Bearer ${token}`,

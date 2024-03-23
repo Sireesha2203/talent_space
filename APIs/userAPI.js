@@ -138,6 +138,20 @@ userApp.get('/get-users',verifyToken,verifySuperToken,expressAsyncHandler(async(
     })
 }))
 
+// userApp.get('/get-network',verifyToken,expressAsyncHandler(async(req,res)=>{
+//   //get user collection object
+//   const userCollectionObj=req.app.get("userCollectionObj")
+//   //get users from db
+  
+//   await userCollectionObj.find({}, { projection: { password: 0 } }).toArray()
+//   .then((userList)=>{
+//       res.status(200).send({message:"UserList",payload:userList})
+//   })
+//   .catch((err)=>{
+//       console.log("Error in Retriving UserList",err)
+//       res.send({message:"Error",errMessage:err.message})
+//   })
+// }))
 // ...
 
 // Route to search for users based on username or email

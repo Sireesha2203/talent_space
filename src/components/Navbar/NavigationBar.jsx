@@ -42,7 +42,7 @@ function TalentSpaceNavbar() {
               placeholder="Search"
               className={`search-field ${showSearch ? 'visible' : ''}`}
               aria-label="Search"
-              style={{ color: '#fff', backgroundColor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.5)' }}
+              style={{ color: 'white', backgroundColor: 'white', borderColor: 'white' }}
             />
           </Form>
           <Nav className="ms-auto align-items-center">
@@ -50,7 +50,7 @@ function TalentSpaceNavbar() {
             <Link to="/network" className="fw-bold nav-link" style={{ color: '#fff' }}><FaUsers className="me-1" /> Network</Link>
             <Link to="/learning" className="fw-bold nav-link" style={{ color: '#fff' }}><FaGraduationCap className="me-1" /> Learning</Link>
             <Link to="/profile" className="fw-bold nav-link" style={{ color: '#fff' }}><FaUser className="me-1" /> Profile</Link>
-            <Link to="/login" className="fw-bold nav-link" style={{ color: '#fff' }}><FaFileSignature className="me-1" /> Loign</Link>
+            <Link to="/login" className="fw-bold nav-link" style={{ color: '#fff' }}><FaFileSignature className="me-1" /> Login</Link>
             <Link to="/signup" className="fw-bold nav-link" style={{ color: '#fff' }}><FaAddressBook className="me-1" /> Sign Up</Link>
           </Nav>
         </Navbar.Collapse>

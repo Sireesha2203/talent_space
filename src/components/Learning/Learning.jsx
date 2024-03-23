@@ -166,7 +166,7 @@ const Learning = () => {
         {categories.map((category, index) => (
           <button
             key={index}
-            className={`btn btn-outline-primary ${selectedCategory === category ? 'active' : ''}`}
+            className={`btn btn-1 ${selectedCategory === category ? 'active' : ''}`}
             onClick={() => handleCategoryClick(category)}
           >
             {category}
@@ -199,7 +199,7 @@ const Learning = () => {
                           </p>
                           <a
                             href={course.link}
-                            className="btn btn-primary"
+                            className="btn btn-1"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
