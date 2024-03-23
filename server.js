@@ -43,6 +43,8 @@ mclient
     app.set("userCollectionObj", userCollectionObj);
     const postCollectionObj = dbObj.collection("postCollection");
     app.set("postCollectionObj", postCollectionObj);
+    const projectCollectionObj = dbObj.collection("projectCollection");
+    app.set("projectCollectionObj", projectCollectionObj);
     console.log("Connection to Talent-Space DB - Success");
   })
   .catch((err) => console.log("Connection to Faculty-Portal DB - Failed"));

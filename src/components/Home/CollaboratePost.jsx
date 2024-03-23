@@ -30,7 +30,7 @@ const CollaboratePost = () => {
       };
 
       // Send a POST request to the JSON Server endpoint to add the new collaborate post
-      const response = await axios.post('http://localhost:4000/collabPosts', newCollabPost);
+      const response = await axios.post('/post-api/create-collabPosts', newCollabPost);
 
       // Clear form fields after successful upload
       setProjectName('');

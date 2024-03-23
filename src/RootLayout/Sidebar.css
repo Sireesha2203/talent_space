@@ -1,0 +1,31 @@
+.sidebar-container {
+    position: fixed;
+    top: 60px; /* Adjust this value as needed */
+    left: 5px;
+    bottom: 0;
+    width: 200px;
+    padding-top: 5px; /* Space between navigation bar and sidebar */
+    color: #5d085e;
+    background-color: #5d085e;
+  }
+  
+  .sidebar {
+    height: calc(100% - 5px); /* Adjust height to fit between navigation bar and bottom */
+  }
+  
+  
+  .sidebar-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .sidebar-item {
+    padding: 10px;
+    margin: 0;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #f0f0f0;
+  }
+  

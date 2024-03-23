@@ -23,12 +23,30 @@ postsApp.post('/create-post',verifyToken, expressAsyncHandler(async (req, res) =
   res.status(201).json({ message: 'Post created successfully', postId: postId, postCollectionResult:postCollectionResult ,userCollectionResult:userCollectionResult});
 }));
 
+postsApp.post('/create-collabPosts',verifyToken, expressAsyncHandler(async (req, res) => {
+  const newPost = req.body;
+  // console.log(req.body)
+  const postId = uuidv4(); // Generate a unique post ID
+  // Construct the post object
+  newPost.postId=postId
+  newPost.likes = { count: 0, users: [] }
+  newPost.comments = { count: 0, comments: {} }
+
+  const postCollectionObj = req.app.get("postCollectionObj"); // Get the postCollection from app settings
+  const postCollectionResult = await postCollectionObj.insertOne(newPost);
+  const userCollectionObj=req.app.get("userCollectionObj");
+  const newPostObject = { postId, tags:newPost.tags }; 
+  const userCollectionResult = await userCollectionObj.updateOne({ username: newPost.metadata.username },{ $push: { "posts": newPostObject } })
+  res.status(201).json({ message: 'Post created successfully', postId: postId, postCollectionResult:postCollectionResult ,userCollectionResult:userCollectionResult});
+}));
+
 // Get all posts
 postsApp.get('/posts-get', expressAsyncHandler(async (req, res) => {
   const postCollectionObj = req.app.get("postCollectionObj"); // Get the postCollection from app settings
-
   const posts = await postCollectionObj.find({}).toArray();
-  res.status(200).json(posts);
+  const projectCollectionObj = req.app.get("projectCollectionObj")
+  const projects= await projectCollectionObj.find({}).toArray();
+  res.status(200).json(posts,projects);
 }));
 
 // // Update a post by ID
