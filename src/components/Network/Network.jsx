@@ -12,14 +12,13 @@ const Network = () => {
     let token=localStorage.getItem('token')
     const fetchData = async () => {
       try {
-        const response = await axios.get('/user-api/get-user',{
+        const response = await axios.get('/user-api/get-users',{
           headers:{
             Authorization:`Bearer ${token}`
           }
         });
         setUsers(response.data.payload);
         
-        console.log(response)
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -35,7 +34,7 @@ const Network = () => {
         {users?.map(user => (
           <Col sm={4} key={user._id.$oid}>
             <Card style={{ marginBottom: '20px' }}>
-              <Card.Img variant="top" src={user.profilepic} />
+              <Card.Img variant="top" src={user.profilepic} height="10vh" width="10vw" />
               <Card.Body>
                 <Card.Title>{user.full_name}</Card.Title>
                 <Card.Text>{user.summary}</Card.Text>
