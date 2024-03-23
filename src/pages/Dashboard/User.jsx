@@ -5,8 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { loginContext } from "../../contexts/loginContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Modal } from "react-bootstrap";
+import { webContext } from "../../contexts/webContext";
 
 function User() {
+  const [,changeSideBarStatus]=useContext(webContext)
+  changeSideBarStatus(true)
   const [userDetails, setUserDetails] = useState({});
   const [editing, setEditing] = useState(true); // State to track whether the user is in editing mode
   const [refresh, setRefresh] = useState(true);

@@ -5,7 +5,7 @@ import { loginContext } from '../../contexts/loginContext';
 import { Button } from 'react-bootstrap';
 
 const OngoingProj = () => {
-  let [sideBarStatus, changeSideBarStatus] = useContext(webContext);
+  let [, changeSideBarStatus] = useContext(webContext);
   let [currentUser]=useContext(loginContext)
   changeSideBarStatus(true);
   const [like, setLike] = useState(0); // Initialize like state with 0

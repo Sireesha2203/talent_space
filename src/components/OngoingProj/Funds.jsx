@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Table } from 'react-bootstrap';
-
+import { webContext } from '../../contexts/webContext';
 function Funds() {
+  const [,changeSideBarStatus]=useContext(webContext)
+  changeSideBarStatus(true)
     const projects = [
         { id: 1, name: 'ecommerce app dev', budget: 10000, availableFunds: 8000 },
         { id: 2, name: 'Recommendation sys', budget: 5000, availableFunds: 2500 },

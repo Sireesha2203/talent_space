@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { webContext } from '../../contexts/webContext';
 
 const Network = () => {
+  
+  const [,changeSideBarStatus]=useContext(webContext)
+  changeSideBarStatus(true)
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
