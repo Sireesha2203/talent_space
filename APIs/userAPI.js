@@ -123,7 +123,7 @@ userApp.post('/user-login', expressAsyncHandler(async (req, res) => {
 
 
 //get userslist
-userApp.get('/get-users',verifyToken,verifySuperToken,expressAsyncHandler(async(req,res)=>{
+userApp.get('/get-users',verifyToken,expressAsyncHandler(async(req,res)=>{
     //get user collection object
     const userCollectionObj=req.app.get("userCollectionObj")
     //get users from db

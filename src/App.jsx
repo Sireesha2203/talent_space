@@ -15,6 +15,7 @@ import CollaboratePost from './components/Home/CollaboratePost'
 import FormComponent from './components/Profile/FormComponent';
 import FeatureRequestForm from './components/FeatureRequestForm';
 import OngoingProj from './components/OngoingProj/OngoingProj'
+import Funds from './components/OngoingProj/Funds';
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
         {
           path:"/form2",
           element:<FeatureRequestForm/>
+        },
+        {
+          path:'/funds',
+          element:<Funds/>
         },
         {
           path: "/SharePost",

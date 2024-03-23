@@ -84,10 +84,8 @@ const CollaboratePost = () => {
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <button type="submit" className="btn btn-primary">Upload Collaborate Post</button>
-          </form>
-</div>
-
-         
+        </form>
+        </div>
         </div>
       </div>
       </div>

@@ -46,37 +46,46 @@ const OngoingProj = () => {
 
   return (
     <div className="feeds">
-      <h1>Ongoing Projects </h1>
-      {projectData?.map(post => (
-        <div className="post" key={post._id}>
-          <div className="postWrapper">
-            <div className="postTop">
-              <div className="postTopLeft">
-                <span className="postUsername">{post.metadata.username}</span>
-                <span className="postDate">{post.metadata.post_date}</span>,
-                <span className="postDate">{post.metadata.post_time}</span>
-              </div>
-            </div>
-            <div className='postBody'>
-                <span className="postText">{post.heading}</span>
-                
-                <span className="postText">{post.text}</span>
-            </div>
-            <div className="postBottom">
-                <div>
-                    <img src="\assets\comment.png" width="25px" alt="" className="likeIcon" />
-                    <span className="postCommentText">{post.collaborators.count} comments</span>
-                </div>
-                <Button
-                style={{ width: "10vw", color: "white" }}
-                type="button"
-                className="btn btn-primary"
-                onClick={handleCollaborate(post._id)}
-                >Collaborate</Button>
+      <h1>Ongoing Projects</h1>
+      {projectData?.map(project => (
+        <div className="post" key={project._id}>
+        <div className="postWrapper">
+          <div className="postTop">
+            <div className="postTopLeft">
+              <span className="postUsername">{project.metadata.username}</span>
+              <span className="postDate">{project.metadata.post_date}</span>,
+              <span className="postDate">{project.metadata.post_time}</span>
             </div>
           </div>
+          <div className='postBody'>
+            <span className="postText">{project.projectName}</span> {/* Assuming "projectName" is the heading */}
+            {/* <div className="postCenter">
+              <img src={project.photo_url} alt="" className="postImg" />
+            </div> */}
+            <div>Required Skills: {project.skills?.map((skill, index) => (
+              <Button
+                key={index} // Essential for proper rendering and performance
+                type="button"
+                className="btn btn-dark"
+                style={{ marginRight: '5px' }} // Optional spacing between buttons
+              >
+                {skill}
+              </Button>
+            ))}
+            </div>
+            <span className="postText">{project.text}</span>
+          </div>
+          <div className="postBottom">
+            <Button
+              style={{ width: "10vw", color: "white" }}
+              type="button"
+              className="btn btn-primary"
+              onClick={handleCollaborate(project._id)}
+            >Collaborate</Button>
+          </div>
         </div>
-      ))}
+        </div>
+      ))};
     </div>
   );
 };

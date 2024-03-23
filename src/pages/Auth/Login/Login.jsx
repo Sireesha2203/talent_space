@@ -47,8 +47,8 @@ function Login() {
         <div className="col-lg-6 col-md-6 col-sm-12 p-4 border bg-white bg-opacity-10 ">
           <div className="card-body" width="100%" height="100%">
             <div className="text-center mb-4">
-              <h1 className="text-white ">Sign In</h1>
-              <p className="text-white ">The key to happiness is to sign in.</p>
+              <h1 >Sign In</h1>
+              <p>The key to happiness is to sign in.</p>
             </div>
             <div className="d-block">
               <form onSubmit={handleSubmit(submitForm)}>
@@ -112,7 +112,7 @@ function Login() {
                     <p className="text-danger">{errors.password?.message}</p>
                   )}
                 </div>
-                <p className="text-white mb-3">
+                <p className=" mb-3">
                   Forget Password?
                   <NavLink className="p-3" to="/reset-password">
                     Reset here
