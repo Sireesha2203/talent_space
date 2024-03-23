@@ -8,7 +8,7 @@ const CollaboratePost = () => {
   const [projectName, setProjectName] = useState('');
   const [text, setText] = useState('');
   const [skills, setSkills] = useState('');
-  const [required, setRequired] = useState('');
+  const [requiredPeople, setrequiredPeople] = useState('');
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ const CollaboratePost = () => {
         projectName,
         text,
         skills: skills.split(','), // Convert skills string to an array
-        required: parseInt(required),
+        requiredPeople: parseInt(requiredPeople),
         metadata: {
           username: 'siri',
           post_date: new Date().toISOString().split('T')[0],
@@ -36,7 +36,7 @@ const CollaboratePost = () => {
       setProjectName('');
       setText('');
       setSkills('');
-      setRequired('');
+      setrequiredPeople('');
 
       alert('Collaborate post uploaded successfully!');
     } catch (error) {
@@ -65,7 +65,7 @@ const CollaboratePost = () => {
             </div>
             <div className="form-group">
               <label>Number of People Required:</label>
-              <input type="number" className="form-control" value={required} onChange={(e) => setRequired(e.target.value)} required />
+              <input type="number" className="form-control" value={requiredPeople} onChange={(e) => setrequiredPeople(e.target.value)} required />
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <button type="submit" className="btn btn-primary">Upload Collaborate Post</button>
