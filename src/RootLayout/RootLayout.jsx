@@ -41,8 +41,7 @@ function RootLayout() {
         </div>
       }
       <Footer />
-    </div>
-    
+    </div>    
   )
 }
 

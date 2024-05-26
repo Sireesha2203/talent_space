@@ -2,7 +2,7 @@ footer {
     padding: 10px;
     left: 0;
     bottom: 0;
-    position:relative;
+    position:fixed;
     width: 100%;
     text-align: center;
     background-color:teal;

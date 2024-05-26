@@ -81,8 +81,6 @@ function App() {
           path : "/ongoing",
           element : <OngoingProj/>
         }
-
-
       ],
     },
   ]);
