@@ -10,7 +10,11 @@ import LandingPage from './LandingPage';
 const Home = () => {
   let [currentUser,,userLoginStatus]=useContext(loginContext)
   let [,changeSideBarStatus]=useContext(webContext)
-  changeSideBarStatus(true)
+  if(userLoginStatus){
+    changeSideBarStatus(true)
+  }else{
+    changeSideBarStatus(false)
+  }
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
 
