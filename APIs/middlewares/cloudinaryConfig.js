@@ -7,8 +7,8 @@ require('dotenv').config()//process.env.PORT
 //configure cloudinary
 cloudinary.config({
     cloud_name:process.env.CLOUD_NAME,
-    api_key:process.env.API_KEY,
-    api_secret:process.env.API_SECRET
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret:process.env.CLOUDINARY_API_SECRET
 })
 
 //configure cloudinary storage
