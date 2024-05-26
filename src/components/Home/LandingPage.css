@@ -1,80 +1,115 @@
-.land{
-   
-    display: inline-block;
-    margin-left: auto;
-    height: 24em;
-    width: 50%;
+.land {
+  display: inline-block;
+  margin-left: auto;
+  height: 24em;
+  width: 50%;
 }
 
-.landing {
-    text-align: center;
+.landing-page {
+  text-align: center;
+  position: relative;
 }
 
 .landSt {
-    display: inline-block;
-    margin-left: auto;
-    width: 50%;
-    position: relative;
-    animation: fadeIn 2s ease-in-out, slideIn 2s ease-in-out;
+  display: inline-block;
+  margin-left: auto;
+  width: 50%;
+  position: relative;
+  animation: fadeIn 2s ease-in-out, slideIn 2s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-    from {
-        transform: translateX(-10%);
-    }
-    to {
-        transform: translateX(0);
-    }
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .word {
-    position: absolute;
-    opacity: 0;
-    animation: appear 9s infinite;
-    margin: 5px;
-    color: #dc1975;
+  position: absolute;
+  opacity: 0;
+  animation: appear 9s infinite;
+  margin: 5px;
+  color: #dc1975;
 }
 
 .connect {
-    animation-delay: 0s;
+  animation-delay: 0s;
 }
 
 .collaborate {
-    animation-delay: 3s;
+  animation-delay: 3s;
 }
 
 .grow {
-    animation-delay: 6s;
+  animation-delay: 6s;
 }
 
 @keyframes appear {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    10% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    30% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    40% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.progress-container {
+  position: relative;
+  left: -45%;
+  height: 100vh;
+  width: 5px;
+  margin: 0 auto;
+}
+
+.progress-line {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 5px;
+  height: 0;
+  background-color: #dc1975;
+  transition: height 0.2s ease-out;
+}
+
+.icons {
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.icon {
+  margin: 30px 0;
+  color: #dc1975;
 }
