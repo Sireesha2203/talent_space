@@ -1,0 +1,80 @@
+.land{
+   
+    display: inline-block;
+    margin-left: auto;
+    height: 24em;
+    width: 50%;
+}
+
+.landing {
+    text-align: center;
+}
+
+.landSt {
+    display: inline-block;
+    margin-left: auto;
+    width: 50%;
+    position: relative;
+    animation: fadeIn 2s ease-in-out, slideIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-10%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.word {
+    position: absolute;
+    opacity: 0;
+    animation: appear 9s infinite;
+    margin: 5px;
+    color: #dc1975;
+}
+
+.connect {
+    animation-delay: 0s;
+}
+
+.collaborate {
+    animation-delay: 3s;
+}
+
+.grow {
+    animation-delay: 6s;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    40% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
