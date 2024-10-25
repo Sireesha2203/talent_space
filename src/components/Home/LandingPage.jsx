@@ -74,7 +74,6 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      <div className='bot'></div>
     </div>
   );
 }
