@@ -35,7 +35,7 @@ const SharePost = () => {
       
       let token = localStorage.getItem('token')
       // Send a POST request to the JSON Server endpoint to add the new post
-      const response = await axios.post('http://localhost:5000/posts-api/create-post', newPost,
+      const response = await axios.post('/posts-api/create-post', newPost,
       {
         headers:{
           Authorization :`Bearer ${token}`,

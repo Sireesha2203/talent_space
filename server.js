@@ -47,7 +47,7 @@ mclient
     app.set("projectCollectionObj", projectCollectionObj);
     console.log("Connection to Talent-Space DB - Success");
   })
-  .catch((err) => console.log("Connection to Faculty-Portal DB - Failed"));
+  .catch((err) => console.log("Connection to Talent Space DB - Failed"));
 
 
 //middleware to deal with page refresh
