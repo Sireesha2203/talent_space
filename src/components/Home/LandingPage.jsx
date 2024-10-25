@@ -29,7 +29,7 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      <div>
+      <div className='one m-5'>
         <img className='land' src='assets/landing.png' alt="" />
         <h2 className='landSt'>
           Empower Your Professional Journey: 
