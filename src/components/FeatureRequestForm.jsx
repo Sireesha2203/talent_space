@@ -2,8 +2,10 @@ import React, { useState,useContext } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { loginContext } from '../contexts/loginContext';
-
+import { webContext } from '../contexts/webContext';
 const FeatureRequestForm = () => {  
+  let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+  changeSideBarStatus(true)
   const [currentUser, , , , ] = useContext(loginContext);
   const [featureRequest, setFeatureRequest] = useState('');
 

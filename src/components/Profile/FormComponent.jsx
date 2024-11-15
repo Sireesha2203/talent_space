@@ -4,8 +4,11 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { loginContext } from '../../contexts/loginContext';
+import { webContext } from '../../contexts/webContext';
 
-const FormComponent = () => {
+const FormComponent = () => {  
+    let [sideBarStatus,changeSideBarStatus]=useContext(webContext);
+    changeSideBarStatus(true)
     let [currentUser,]=useContext(loginContext);
     let navigate=useNavigate();
     const { register, handleSubmit, control, reset, getValues } = useForm();
